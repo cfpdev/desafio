@@ -1,0 +1,136 @@
+<!doctype html>
+<html ng-app>
+
+<head>
+	<title>Cadastro de Viagem</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body>
+
+	<div class="container" ng-controller="ViagensController">
+		<header class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills float-right">
+					<li class="nav-item">
+						<a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+				</ul>
+			</nav>
+			<h3 class="text-muted">Planejamento de Viagem</h3>
+		</header>
+
+		<main role="main">
+
+			<div class="jumbotron">
+				<h1 class="header-jumbotron">Dados da Viagem</h1>
+				<form class="form" name="formCadastroViagem" data-toggle="validator" role="form">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputOrigem">Origem da Viagem</label>
+			<input type="text" class="form-control" ng-model="item.origem" id="inputOrigem" placeholder="Origem"
+				data-error="Por favor, informe Origem da Viagem." required>
+				<div class="help-block with-errors"></div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputDestino">Destino da Viagem</label>
+			<input type="text" class="form-control" ng-model="item.destino" id="inputDestino" placeholder="Destino"
+				data-error="Por favor, informe Destino da Viagem." required>
+				<div class="help-block with-errors"></div>
+    </div>
+  </div>
+	<div class="form-row">
+		<div class="form-group col-md-4">
+			<label for="inputData">Data da Viagem</label>
+			<input type="date" class="form-control" ng-model="item.data" id="inputData"
+				data-error="Por favor, informe Data." required>
+				<div class="help-block with-errors"></div>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="inputData">Hora da Viagem</label>
+			<input type="time" class="form-control" ng-model="item.hora" id="inputHora"
+				data-error="Por favor, informe Hora." required>
+				<div class="help-block with-errors"></div>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="inputTransporte">Qual Tipo de Transporte</label>
+			<input type="text" class="form-control" ng-model="item.transporte" id="inputTransporte" placeholder="Ex.. Carro"
+				data-error="Por favor, informe o tipo de transporte." required>
+				<div class="help-block with-errors"></div>
+		</div>
+	</div>
+
+	<div class="form-row">
+		<div class="form-group col-md-8">
+			<label for="inputPassageiro">Nome do Passageiro</label>
+			<input type="text" class="form-control" ng-model="item.passageiro" id="inputPassageiro" placeholder="Nome"
+			data-error="Por favor, informe o nome." required>
+			<div class="help-block with-errors"></div>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="inputContato">Tel. de Contato</label>
+			<input type="tel" class="form-control" ng-model="item.contato" id="inputContato" placeholder="xx-xxxxx-xxxx"
+			data-error="Por favor, informe o telefone de contato." required pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}">
+			<div class="help-block with-errors"></div>
+		</div>
+	</div>
+
+	<button class="btn btn-sm btn-primary" role="button" ng-click="adicionaItem()">Adicionar Viagem</button>
+</form>
+
+				<div class="table">
+					<p>
+						<table id="viagens-adicionadas" class="table table-striped">
+							<thead class="thead-dark">
+								<tr>
+									<th>Confirmado?</th>
+									<th>Origem</th>
+									<th>Destino</th>
+									<th>Data</th>
+									<th>Hora</th>
+									<th>Transporte</th>
+									<th>Passageiro</th>
+									<th>Contato</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in itens" class="comprado-{{ item.comprado }}">
+									<td><input type="checkbox" ng-model="item.comprado"></td>
+									<td><strong>{{ item.origem }}</strong></td>
+									<td><strong>{{ item.destino }}</strong></td>
+									<td><strong>{{ item.data }}</strong></td>
+									<td><strong>{{ item.hora }}</strong></td>
+									<td><strong>{{ item.transporte }}</strong></td>
+									<td><strong>{{ item.passageiro }}</strong></td>
+									<td><strong>{{ item.contato }}</strong></td>
+								</tr>
+							</tbody>
+						</table>
+					</p>
+				</div>
+
+			</div>
+
+			<footer class="footer">
+				<p>&copy; Company 2018</p>
+			</footer>
+
+	</div>
+
+	</main>
+
+
+	<script type="text/javascript" src="lib/jquery/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/js/validator.min.js"></script>
+	<script type="text/javascript" src="lib/angular-1.0.1.js"></script>
+	<script type="text/javascript" src="js/CadastroViagem.js"></script>
+</body>
+
+</html>
